@@ -120,7 +120,9 @@ for e in range(num_epochs):
         # loss function
         loss = loss_fn(out, label)
         loss.backward()
+
         torch.nn.utils.clip_grad_norm_(model.parameters(), max_grad_norm)
+
         optimizer.step()
         scheduler.step()  # Update learning rate schedule
         train_acc += calc_accuracy(out, label)
